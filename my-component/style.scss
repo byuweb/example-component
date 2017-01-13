@@ -1,6 +1,41 @@
 $weight: bold;
+// colors
+$navy: #002E5D;
 
 div {
   font-weight: $weight;
 	margin: 5px;
+}
+
+#profile {
+	#inner-top {
+		display: flex;
+		justify-content: space-between;
+	}
+	#inner-top.picture-left {
+		.profile-image {
+			order: 1;
+		}
+	}
+	.profile-image {
+		margin: 20px;
+	}
+}
+// :host refers to the custom element, in our case that is <my-proile>...</my-profile>
+// using a class on the custom element
+:host.picture-left #inner-top .profile-image {
+	order: 1;
+}
+// using a custom attribute on the custom element
+:host[theme=blue] {
+	.profile-image {
+		background: $navy;
+	}
+	
+}
+:host[theme=gray] {
+	.profile-image {
+		background: gray;
+	}
+	
 }
