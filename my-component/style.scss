@@ -22,6 +22,11 @@ div {
 	}
 }
 // :host refers to the custom element, in our case that is <my-proile>...</my-profile>
+// by default the host element is display: inline, so it's good to set this to block or inline-block..
+:host {
+  display: block
+
+}
 // using a class on the custom element
 :host.picture-left #inner-top .profile-image {
 	order: 1;
