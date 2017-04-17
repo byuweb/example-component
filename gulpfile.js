@@ -15,34 +15,32 @@
  *    limitations under the License.
  **/
 'use strict';
-//const cached    = require('gulp-cached');
-const fuse      = require('gulp-fuse');
-const gulp      = require('gulp');
-const sass      = require('gulp-sass');
+const browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const initWcBuild = require('byu-web-component-build').gulp;
 
-gulp.task('build', ['fuse'], function() {
-    // put closure code in here
+initWcBuild(gulp, {
+    componentName: 'byu-demo-component',
+    js: {
+        input: './byu-demo-component/script.js'
+    }
+    // if FOUC is added later, then specify that stylesheet here, to load styling before component loads
+    //css: {
+    //    input: './css/site.scss'
+    //}
 });
 
-gulp.task('fuse', ['sass'], function() {
-	/* Pulling the files of the component and bundling them into a single js file */
-    return gulp.src('./my-component/*')
-        //.pipe(cached('fuse'))
-        .pipe(fuse())
-        .pipe(gulp.dest('./dist'));
+gulp.task('watch', ['build'], function (done) {
+
+    browserSync.init({
+        server: {
+            baseDir: './',
+        },
+        startPath: '/docs/index.html',
+        notify: false
+    }, done);
+
+    gulp.watch(['./byu-demo-component/**', './css/*.scss'], ['build']);
 });
 
-gulp.task('sass', function() {
-	/* compiles the scss into css */
-    return gulp.src('./my-component/*.scss')
-        //.pipe(cached('sass'))
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./my-component'));
-});
-
-gulp.task('watch', function () {
-	/* whenever a file in my-component directory is changed, run the fuse task to re-bundle  */
-    gulp.watch('./my-component/*', ['build']);
-});
-
-gulp.task('default', ['watch']);
+gulp.task('build', ['wc:build']);
