@@ -25,6 +25,11 @@
 
 	<script src="load-components.js"></script>
 
+	<link type="text/css" rel="stylesheet" href="//cloud.typography.com/75214/6517752/css/fonts.css" media="all" />
+	<link rel="stylesheet" href="https://cdn.byu.edu/byu-theme-components/latest/byu-theme-components.min.css" />
+	<script async src="https://cdn.byu.edu/byu-theme-components/latest/byu-theme-components.min.js"></script>
+
+
 	<script async src="lib/html-imports/html-imports.min.js"></script>
 
 	<link rel="import" href="lib/iron-demo-helpers/demo-snippet.html">
@@ -70,16 +75,24 @@
 	<div class="page-content">
 		<h1>Demo Component</h1>
 
-		<byu-demo-component class="picture-left" theme="blue">
+		Using code similar to that shown below you can create an easy demo page with documentation for the various features
+		and use cases of your component.
 
-			<!-- you could also use: <span slot="fullName">Katria Lesser</span>   -->
-			<span slot="lastName">Lesser</span>
-			<span slot="firstName">Katria</span>
+		<demo-snippet>
+			<template>
+				<byu-demo-component class="picture-left" theme="blue">
 
-			<!-- Note that the entire span or div will be place within the slot, not just its value. -->
-			<span slot="email">myemail@byu.edu</span>
+					<!-- you could also use: <span slot="fullName">Katria Lesser</span>   -->
+					<span slot="lastName">Lesser</span>
+					<span slot="firstName">Katria</span>
 
-		</byu-demo-component>
+					<!-- Note that the entire span or div will be place within the slot, not just its value. -->
+					<span slot="email">myemail@byu.edu</span>
+
+				</byu-demo-component>
+			</template>
+		</demo-snippet>
+
 
 	</div>
 	<footer>

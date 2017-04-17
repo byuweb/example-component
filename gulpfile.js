@@ -23,11 +23,10 @@ initWcBuild(gulp, {
     componentName: 'byu-demo-component',
     js: {
         input: './byu-demo-component/script.js'
+    },
+    css: {
+       input: './css/fouc.scss'
     }
-    // if FOUC is added later, then specify that stylesheet here, to load styling before component loads
-    //css: {
-    //    input: './css/site.scss'
-    //}
 });
 
 gulp.task('watch', ['build'], function (done) {
@@ -40,7 +39,11 @@ gulp.task('watch', ['build'], function (done) {
         notify: false
     }, done);
 
-    gulp.watch(['./byu-demo-component/**', './css/*.scss'], ['build']);
+    gulp.watch(['./byu-demo-component/**', './css/*.scss', './docs/Index.html'], ['build']);
 });
 
-gulp.task('build', ['wc:build']);
+gulp.task('build', ['wc:build'], function() {
+     browserSync.reload();
+});
+
+gulp.task('default', ['watch']);

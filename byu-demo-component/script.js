@@ -29,7 +29,7 @@ class BYUDemoComponent extends HTMLElement {
     connectedCallback() {
         const component = this;
 
-        util.applyTemplate(this, 'byu-menu', template, () => {
+        util.applyTemplate(this, 'byu-demo', template, () => {
 
         });
     }
