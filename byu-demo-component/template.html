@@ -1,0 +1,54 @@
+<!--
+  ~  @license
+  ~    Copyright 2016 Brigham Young University
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<style> 
+  ${require('./style.scss')}
+</style>
+
+<div>My Custom Web Component</div>
+
+
+<!-- Slot is a placeholder for element(s) -->
+
+<div id="profile">
+	<div class="inner-top">
+		<b>Name</b>:
+		<slot name="fullName">
+		<!-- If the slot fullName is populated, then it will ignore anything trying to populate its children (slot or not) -->
+			<slot name="firstName"></slot>
+			<slot name="lastName"></slot>
+		</slot>
+
+		<slot name="profile-image">
+			<!-- whatever is inside your slot acts as a default, that is overridden/replaced by users actual html-->
+			<img src="img/generic-profile.png">
+		</slot>
+	</div>
+	<div class="inner-middle">
+		<b>Email</b>: 
+		<slot name="email">Unknown</slot><br>
+		<b>Address</b>: 
+		<slot name="address">Unknown</slot>
+	</div>
+	<div class="inner-bottom"></div>
+</div>
+
+
+
+
+
+
