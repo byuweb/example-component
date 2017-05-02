@@ -66,7 +66,7 @@ As of this writing we recommend using gulp to run the build process. The provide
 Adding to the BYU CDN
 ---------------------
 
-To add a component to the BYU CDN you need to create a file in your project root called .cdn-config.yml. This file will specify the files from the dist folder that you want hosted on the CDN, as well as other metadata such as the URL where you plan to host the docs.
+To add a component to the BYU CDN you need to create a file in your project root called .cdn-config.yml. This file will specify the files from the dist folder that you want hosted on the CDN, as well as other metadata such as the URL where you plan to host the docs. You will then need to update file 'main-config-yml' in the [BYU CDN github repository](https://github.com/byuweb/web-cdn) via a pull request.
 
 
 
